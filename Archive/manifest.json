@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "SecureSurf",
+  "version": "1.0.0",
+  "description": "Introducing SecureSurf - your digital shield against cyber threats. SecureSurf is a cutting-edge Chrome extension leveraging the power of machine learning and URL analysis to provide real-time protection against malicious and phishing websites. With its intelligent algorithms, it swiftly identifies potential threats, keeping your online browsing experience safe and secure.",
+  "permissions": ["scripting", "activeTab", "tabs", "webNavigation"],
+  "host_premissions": ["https://www.google.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"],
+      "js": ["content_script.js"]
+    }
+  ]
+}
