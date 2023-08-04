@@ -1,0 +1,20 @@
+{
+  "name": "SecureSurf",
+  "description": "Digital Shield Against Cyber Threats",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "/popup/popup.html",
+    "default_icon": "/images/icon24.png"
+  },
+  "icons": {
+    "16": "/images/icon16.png",
+    "24": "/images/icon24.png",
+    "128": "/images/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["webNavigation"],
+  "host_permissions": ["https://google.com/*"]
+}
