@@ -13,9 +13,24 @@
     (anchorTag) => !anchorTag.getAttribute('class')
   );
 
+  filteredAnchorTags.forEach((anchor) => {
+    const h3Element = anchor.querySelector('h3');
+
+    if (h3Element) {
+      // Create a new text node with the "SAFE" text
+      const safeText = document.createTextNode('SAFE');
+
+      // Insert the new text node after the h3 element
+      h3Element.insertAdjacentText('afterend', 'SAFE');
+    }
+  });
+
   const scrapedLinks = filteredAnchorTags.map((anchorTag) =>
     anchorTag.getAttribute('href')
   );
 
-  console.log(scrapedLinks);
+  console.log('ANCHOR TAGS: ', filteredAnchorTags.length);
+  console.log('SCRAPED LINKS: ', scrapedLinks.length);
 })();
+
+//NOTE YOU HAVE FIGURED ONE MORE DISTINGUISHING FACTORS FOR LINKS. YOU NEED TO FILTER OUT THOSE ANCHOR TAGS THAT HAVE AN H3 TAG
