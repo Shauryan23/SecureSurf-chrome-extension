@@ -13,7 +13,14 @@
     (anchorTag) => !anchorTag.getAttribute('class')
   );
 
-  filteredAnchorTags.forEach((anchor) => {
+  const finalFilteredAnchorTags = Array.from(filteredAnchorTags).filter(
+    (anchorTag) => {
+      const h3Element = anchorTag.querySelector('h3');
+      return h3Element !== null;
+    }
+  );
+
+  finalFilteredAnchorTags.forEach((anchor) => {
     const h3Element = anchor.querySelector('h3');
 
     if (h3Element) {
@@ -25,11 +32,11 @@
     }
   });
 
-  const scrapedLinks = filteredAnchorTags.map((anchorTag) =>
+  const scrapedLinks = finalFilteredAnchorTags.map((anchorTag) =>
     anchorTag.getAttribute('href')
   );
 
-  console.log('ANCHOR TAGS: ', filteredAnchorTags.length);
+  console.log('ANCHOR TAGS: ', finalFilteredAnchorTags.length);
   console.log('SCRAPED LINKS: ', scrapedLinks.length);
 })();
 
