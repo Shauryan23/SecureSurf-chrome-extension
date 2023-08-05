@@ -2,10 +2,16 @@
 function onNavigationCompleted(details) {
   console.log('Navigation completed for URL:', details.url);
 
+  // Inject the CSS file into the loaded page
+  chrome.scripting.insertCSS({
+    target: { tabId: details.tabId },
+    files: ['styles.css'],
+  });
+
   // Inject a content script to access the document object of the loaded page
   chrome.scripting.executeScript({
     target: { tabId: details.tabId },
-    files: ['contentScript.js'],
+    files: ['script.js'],
   });
 }
 
