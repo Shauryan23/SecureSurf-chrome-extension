@@ -20,15 +20,30 @@
     }
   );
 
+  // NEW
+  const myStylesClass = `
+    color: red;
+    font-size: 16px;
+  `;
+
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `.my-element {${myStylesClass}}`;
+  document.head.appendChild(styleElement);
+
+  // NEW
+
   finalFilteredAnchorTags.forEach((anchor) => {
     const h3Element = anchor.querySelector('h3');
 
     if (h3Element) {
-      // Create a new text node with the "SAFE" text
-      const safeText = document.createTextNode('SAFE');
-
+      // Create your dynamically added element
+      // const myElement = document.createElement('div');
+      // myElement.textContent = 'Hello, world!';
+      h3Element.classList.add('my-element'); // Apply the defined class to the element
+      // document.body.appendChild(myElement);
+      // h3Element.insertAdjacentElement('afterend', myElement);
       // Insert the new text node after the h3 element
-      h3Element.insertAdjacentText('afterend', 'SAFE');
+      // h3Element.insertAdjacentText('afterend', 'SAFE');
     }
   });
 
