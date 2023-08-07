@@ -29,6 +29,30 @@
     });
 
     if (h3Element) {
+      // Create the SVG element
+      const svgElement = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'svg'
+      );
+      svgElement.setAttribute('width', '10');
+      svgElement.setAttribute('height', '10');
+
+      // Create a child SVG element (e.g., a circle)
+      const circleElement = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'circle'
+      );
+      circleElement.setAttribute('cx', '5');
+      circleElement.setAttribute('cy', '5');
+      circleElement.setAttribute('r', '5');
+      circleElement.setAttribute('fill', 'blue');
+
+      // Append the circle element to the SVG element
+      svgElement.appendChild(circleElement);
+
+      // Insert the SVG element after the h3 element
+      h3Element.insertAdjacentElement('afterend', svgElement);
+
       // Insert the new text node after the h3 element
       h3Element.insertAdjacentText('afterend', 'SAFE');
     }
