@@ -48,9 +48,31 @@
     });
   }
 
+  function makePostRequest(apiUrl, data) {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    return fetch(apiUrl, requestOptions)
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   const filteredAnchors = extractData();
   toggleAnimation(filteredAnchors.anchorTags);
   console.log(filteredAnchors);
+
+  // POST REQUEST
+  const apiUrl = 'BACKEND_API_URL';
+  makePostRequest(apiUrl, filteredAnchors.domainLink).then((result) => {
+    console.log('Result:', result);
+  });
 
   /* SAFE SVG
       // Create Safe SVG element
