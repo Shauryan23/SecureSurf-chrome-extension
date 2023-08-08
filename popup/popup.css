@@ -1,55 +1,88 @@
-body {
-  font-family: Arial, sans-serif;
+body,
+html {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #00f2ff 0%, #e41cff 100%);
+  min-width: 250px;
+  min-height: 300px; /* Adjust the height as needed */
 }
 
-.container {
-  text-align: center;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  animation: slide-in 0.5s ease-out;
+.gradient-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    #f5a300,
+    #ffc857,
+    #ffdc95,
+    #a2bdcd,
+    #769fb6
+  );
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
 }
 
-@keyframes slide-in {
+@keyframes gradientAnimation {
   0% {
-    transform: translateY(-20px);
-    opacity: 0;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
+    background-position: 0% 50%;
+  }
+}
+
+.heading {
+  font-size: 34px;
+  text-align: center;
+  margin-top: 20%;
+  opacity: 0;
+  transform: translateY(-40px);
+  animation: slideIn 1.5s ease 0.5s forwards, fadeIn 1s ease 1s forwards,
+    colorChange 3s infinite;
+  background: linear-gradient(90deg, #325b74 50%, #325b74 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sub-heading {
+  font-size: 24px;
+  color: #8a6549;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideIn 1s ease 1s forwards, fadeIn 1s ease 1.5s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
     opacity: 1;
   }
 }
 
-h1 {
-  font-size: 32px;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  font-size: 18px;
-  color: #666;
-  margin: 10px 0;
-  padding: 0;
-}
-
-button {
-  font-size: 18px;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
+@keyframes colorChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
