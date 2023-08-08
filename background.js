@@ -11,7 +11,7 @@ function onNavigationCompleted(details) {
   // Inject a content script to access the document object of the loaded page
   chrome.scripting.executeScript({
     target: { tabId: details.tabId },
-    files: ['script.js'],
+    files: ['contentScript.js'],
   });
 }
 
