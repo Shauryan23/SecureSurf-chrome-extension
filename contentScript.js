@@ -48,14 +48,15 @@
         }
       });
     } else {
-      let cnt = 1;
       anchorTags.forEach((anchor) => {
         const h3Element = anchor.querySelector('h3');
 
         if (h3Element) {
           h3Element.classList.toggle('jitter-text');
 
-          if (responseObject[cnt] == 'good') {
+          linkHeading = anchor.getAttribute('href');
+
+          if (responseObject[linkHeading] == 'good') {
             // SAFE SVG
             // Create Safe SVG element
             const safeSvgElement = document.createElementNS(
@@ -190,7 +191,6 @@
             // Insert the SVG element after the h3 element
             h3Element.insertAdjacentElement('afterend', unsafeSvgElement);
           }
-          cnt++;
         }
       });
     }
@@ -216,23 +216,15 @@
   toggleAnimation(filteredAnchors.anchorTags);
   console.log(filteredAnchors);
 
-  // // POST REQUEST
-  // const apiUrl = 'BACKEND_API_URL';
-  // makePostRequest(apiUrl, filteredAnchors.domainLink).then((result) => {
-  //   console.log('Result:', result);
-  // });
-
-  // Simulate Dummy Response
-  const response = {};
-  for (let i = 0; i < filteredAnchors.anchorTags.length; i++) {
-    const randomValue = Math.random() < 0.5 ? 'good' : 'bad';
-    response[i + 1] = randomValue;
-  }
-
-  setTimeout(() => {
-    console.log('Delayed action after 3 seconds');
-    toggleAnimation(filteredAnchors.anchorTags, response);
-  }, 3000);
+  // POST REQUEST
+  const apiUrl = '<aws-lamda-function-url>';
+  const reqObj = {
+    links: filteredAnchors.domainLink,
+  };
+  makePostRequest(apiUrl, reqObj).then((result) => {
+    console.log('Result:', result);
+    toggleAnimation(filteredAnchors.anchorTags, result);
+  });
 
   /* SAFE SVG
       // Create Safe SVG element
