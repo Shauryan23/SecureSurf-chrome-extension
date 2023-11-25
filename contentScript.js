@@ -217,7 +217,8 @@
   console.log(filteredAnchors);
 
   // POST REQUEST
-  const apiUrl = '<aws-lamda-function-url>';
+  const apiUrl =
+    'https://4ryeqyyaadtolwijhblgckimba0stmiq.lambda-url.us-east-1.on.aws/predict';
   const reqObj = {
     links: filteredAnchors.domainLink,
   };
